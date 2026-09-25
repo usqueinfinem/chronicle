@@ -2,18 +2,29 @@ import { defineConfig } from "vite";
 import path from "path";
 import fs from "fs";
 
-// Find where index.html actually lives in the project
-let rootPath = "./";
-if (!fs.existsSync(path.resolve(__dirname, "index.html"))) {
-  if (fs.existsSync(path.resolve(__dirname, "frontend/index.html"))) {
-    rootPath = "./frontend";
-  } else if (fs.existsSync(path.resolve(__dirname, "src/index.html"))) {
-    rootPath = "./src";
+// Automatically search every directory for the index.html file
+function findIndexHtml(dir: string): string | null {
+  const files = fs.readdirSync(dir);
+  for (const file of files) {
+    const fullPath = path.join(dir, file);
+    if (file === 'node_modules' || file === '.git' || file === '.github') continue;
+    
+    const stat = fs.statSync(fullPath);
+    if (stat.isDirectory()) {
+      const found = findIndexHtml(fullPath);
+      if (found) return found;
+    } else if (file === 'index.html') {
+      return dir;
+    }
   }
+  return null;
 }
 
+const detectedRoot = findIndexHtml(__dirname) || "./";
+console.log(`[Vite Build] Found index.html root directory at: ${detectedRoot}`);
+
 export default defineConfig({
-  root: rootPath, // Tells Vite exactly where index.html is hiding
+  root: detectedRoot, // Dynamically targets the exact folder containing index.html
   base: '/ishikas-magical-chronicle/',
   server: {
     host: "::",
