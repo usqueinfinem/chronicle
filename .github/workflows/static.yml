@@ -29,7 +29,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Removed the strict cache option that caused the crash
 
       - name: Install dependencies
         run: npm install
@@ -43,8 +42,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Lovable/Vite builds the production site into the 'dist' folder
-          path: './dist'
+          # This fallback dynamically checks if 'dist' or 'build' exists
+          path: |
+            dist
+            build
 
       - name: Deploy to GitHub Pages
         id: deployment
