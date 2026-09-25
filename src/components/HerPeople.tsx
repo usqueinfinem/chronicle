@@ -7,7 +7,7 @@ const family = [
   { title: "Kitu", name: "Shweta" },
 ];
 
-const friends = ["Anchal", "Simran P2", "Ruchi"];
+const friends = ["Anchal", "Simran P2"];
 
 function PersonCard({ title, name, index }: { title: string; name: string; index: number }) {
   return (
@@ -33,27 +33,27 @@ function PersonCard({ title, name, index }: { title: string; name: string; index
 
 export default function HerPeople() {
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section className="relative px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="The Order of the Issshii"
         title="Her inner circle — the real magic"
         subtitle="The people she loves fiercely, and who love her right back."
       />
 
-      <div className="mx-auto mt-16 max-w-4xl">
+      <div className="mx-auto mt-12 max-w-4xl">
         <p className="text-center font-display text-sm tracking-[0.3em] text-gold uppercase">
           The Founders &amp; the Family
         </p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
           {family.map((p, i) => (
             <PersonCard key={p.name} title={p.title} name={p.name} index={i} />
           ))}
         </div>
 
-        <p className="mt-14 text-center font-display text-sm tracking-[0.3em] text-gold uppercase">
+        <p className="mt-10 text-center font-display text-sm tracking-[0.3em] text-gold uppercase">
           Dumbledore&rsquo;s Army — Friends Division
         </p>
-        <div className="mt-8 grid gap-5 sm:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-2xl gap-4 sm:grid-cols-2">
           {friends.map((name, i) => (
             <PersonCard key={name} title="Trustworthy ally" name={name} index={i} />
           ))}
@@ -64,7 +64,7 @@ export default function HerPeople() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="mx-auto mt-14 max-w-xl text-center font-letter text-xl leading-relaxed text-muted-foreground"
+          className="mx-auto mt-10 max-w-xl text-center font-letter text-xl leading-relaxed text-muted-foreground"
         >
           Behind every great witch stands a small, loyal order — and every one of them
           knows she&rsquo;d fight a mountain troll for them.

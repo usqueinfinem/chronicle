@@ -47,7 +47,7 @@ export default function Finale() {
   const left = useBirthdayCountdown();
 
   return (
-    <section className="relative overflow-hidden px-4 pt-28 pb-20 sm:pt-36">
+    <section id="finale" className="relative scroll-mt-16 overflow-hidden px-4 pt-20 pb-16 sm:pt-24">
       <SectionHeading
         eyebrow="27 September — the day magic was born"
         title="Happy Birthday, meri Cuntu Bamby"
@@ -55,7 +55,7 @@ export default function Finale() {
       />
 
       {/* countdown */}
-      <div className="mx-auto mt-14 flex max-w-2xl justify-center gap-3 sm:gap-5">
+      <div className="mx-auto mt-10 flex max-w-2xl justify-center gap-3 sm:gap-5">
         {[
           { v: left?.d ?? "--", l: "days" },
           { v: left?.h ?? "--", l: "hours" },
@@ -78,7 +78,7 @@ export default function Finale() {
       </p>
 
       {/* the mores cascade */}
-      <div className="mx-auto mt-16 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-3">
+      <div className="mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-x-6 gap-y-3">
         {mores.map((m, i) => (
           <motion.span
             key={m}
@@ -103,7 +103,7 @@ export default function Finale() {
       </div>
 
       {/* mischief managed */}
-      <div className="relative mx-auto mt-24 max-w-2xl text-center">
+      <div className="relative mx-auto mt-16 max-w-2xl text-center">
         <div className="flex items-center justify-center gap-4">
           <Sparkle className="h-4 w-4" />
           <Snitch className="h-10 w-20" />

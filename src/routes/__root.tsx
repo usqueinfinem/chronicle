@@ -83,14 +83,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "A magical, cinematic storybook for issshii — sealed letters, floating candles, a Pensieve of memories and one very true letter.",
+          "A cinematic magical chronicle for Ishika — her world, favourite memories, enchanted map and a love written in the stars.",
       },
       { name: "author", content: "Tumhara" },
       { property: "og:title", content: "Ishika Awasthi & the Goblet of Forever" },
       {
         property: "og:description",
         content:
-          "A magical, cinematic storybook for issshii — sealed letters, floating candles, a Pensieve of memories and one very true letter.",
+          "A cinematic magical chronicle for Ishika — her world, favourite memories, enchanted map and a love written in the stars.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

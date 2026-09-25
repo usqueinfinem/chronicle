@@ -117,18 +117,18 @@ function MemoryCard({ m, index }: { m: (typeof memories)[number]; index: number 
 
 export default function Pensieve() {
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section id="pensieve" className="relative scroll-mt-16 px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="The Pensieve"
         title="Memories, bottled & preserved"
         subtitle="Seven and a half months, and the vials overflow. Tap one — step inside."
       />
-      <div className="mx-auto mt-16 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {memories.map((m, i) => (
           <MemoryCard key={m.title} m={m} index={i} />
         ))}
       </div>
-      <p className="mx-auto mt-10 max-w-xl text-center font-hand text-2xl text-gold">
+      <p className="mx-auto mt-8 max-w-xl text-center font-hand text-2xl text-gold">
         And there are so, so, so many more.
       </p>
     </section>

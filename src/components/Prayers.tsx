@@ -20,14 +20,14 @@ const prayers = [
 
 export default function Prayers() {
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section className="relative px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="The Unbreakable Vow, in prayer form"
         title="Three Prayers, One Answer"
         subtitle="Every prayer he ever made was secretly about her."
       />
 
-      <div className="mx-auto mt-16 grid max-w-5xl gap-5 lg:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-5xl gap-4 lg:grid-cols-3">
         {prayers.map((p, i) => (
           <motion.div
             key={p.deity}
@@ -55,7 +55,7 @@ export default function Prayers() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.9 }}
-        className="parchment-panel mx-auto mt-12 max-w-3xl rounded-lg p-10 text-center"
+        className="parchment-panel mx-auto mt-9 max-w-3xl rounded-lg p-10 text-center"
       >
         <p className="font-letter text-2xl leading-relaxed">
           And somehow, today, he looks at her and knows —{" "}

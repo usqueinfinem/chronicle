@@ -43,7 +43,7 @@ const joys = [
 
 export default function AboutHer() {
   return (
-    <section id="marauders-map" className="relative px-4 py-28 sm:py-36">
+    <section id="marauders-map" className="relative scroll-mt-16 px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="The Marauder's Map of Ishika"
         title="I solemnly swear she is up to good"
@@ -51,7 +51,7 @@ export default function AboutHer() {
       />
 
       {/* traits */}
-      <div className="mx-auto mt-16 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {traits.map((t, i) => (
           <motion.div
             key={t.title}
@@ -76,7 +76,7 @@ export default function AboutHer() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.8 }}
-        className="parchment-panel mx-auto mt-12 max-w-3xl rounded-lg p-8 text-center sm:p-10"
+        className="parchment-panel mx-auto mt-9 max-w-3xl rounded-lg p-8 text-center sm:p-10"
       >
         <p className="font-display text-[0.65rem] tracking-[0.35em] uppercase opacity-70">
           Love language, detected
@@ -90,14 +90,14 @@ export default function AboutHer() {
       </motion.div>
 
       {/* enchanted rules */}
-      <div className="mx-auto mt-16 max-w-3xl">
+      <div className="mx-auto mt-12 max-w-3xl">
         <h3 className="text-center font-display text-xl font-semibold tracking-wide text-gold">
           Enchanted Rules of the Issshii
         </h3>
         <p className="mt-2 text-center text-sm text-muted-foreground">
           Break them at your own peril.
         </p>
-        <ul className="mt-8 space-y-3">
+        <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           {enchantedRules.map((rule, i) => (
             <motion.li
               key={rule}
@@ -117,7 +117,7 @@ export default function AboutHer() {
       </div>
 
       {/* joys chips */}
-      <div className="mx-auto mt-14 max-w-3xl text-center">
+      <div className="mx-auto mt-10 max-w-3xl text-center">
         <p className="eyebrow">Known to happily apparate for</p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
           {joys.map((j, i) => (
