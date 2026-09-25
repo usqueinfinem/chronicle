@@ -1,4 +1,3 @@
-# Definitive workflow for deploying nested Vite/React/TanStack content from Lovable to GitHub Pages
 name: Deploy Lovable site to Pages
 
 on:
@@ -22,49 +21,37 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
-
-      - name: Force Locate Web Assets
+      - name: Create Web Page Directory
         run: |
-          mkdir -p github_deploy_dir
-          
-          # Check nested framework output first
-          if [ -d ".output/public" ]; then
-            echo "Found Nitro/TanStack output"
-            cp -r .output/public/* github_deploy_dir/
-          # Check standard production build folders
-          elif [ -d "dist" ] && [ "$(ls -A dist)" ]; then
-            echo "Found populated dist folder"
-            cp -r dist/* github_deploy_dir/
-          elif [ -d "build" ] && [ "$(ls -A build)" ]; then
-            echo "Found populated build folder"
-            cp -r build/* github_deploy_dir/
-          else
-            # Deep search for the real compiled application index file
-            echo "Deep searching for compiled index.html..."
-            TARGET_FILE=$(find . -name "index.html" -not -path "*/node_modules/*" -not -path "./github_deploy_dir/*" | head -n 1)
-            
-            if [ ! -z "$TARGET_FILE" ]; then
-              TARGET_DIR=$(dirname "$TARGET_FILE")
-              echo "Target web directory identified: $TARGET_DIR"
-              cp -r "$TARGET_DIR"/* github_deploy_dir/
-            else
-              echo "Fallback: Deploying sanitized root repository content."
-              rsync -av --exclude='node_modules' --exclude='.git' --exclude='.github' --exclude='github_deploy_dir' ./ github_deploy_dir/
-            fi
-          fi
+          mkdir -p public
+          cat << 'EOF' > public/index.html
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Ishika's Wizarding World</title>
+              <style>
+                  html, body {
+                      margin: 0;
+                      padding: 0;
+                      width: 100%;
+                      height: 100%;
+                      overflow: hidden;
+                      background-color: #000;
+                  }
+                  iframe {
+                      width: 100%;
+                      height: 100%;
+                      border: none;
+                  }
+              </style>
+          </head>
+          <body>
+              <iframe src="https://lovable.app" allow="autoplay; encrypted-media; fullscreen"></iframe>
+          </body>
+          </html>
+          EOF
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -72,7 +59,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './github_deploy_dir'
+          path: './public'
 
       - name: Deploy to GitHub Pages
         id: deployment
