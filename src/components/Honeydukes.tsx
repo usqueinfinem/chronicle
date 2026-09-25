@@ -28,14 +28,14 @@ const boggarts = [
 
 export default function Honeydukes() {
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section className="relative px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="Honeydukes, curate's edition"
         title="The Official Menu of the Issshii"
         subtitle="Approved delicacies — and the boggarts that shall never pass the door."
       />
 
-      <div className="mx-auto mt-16 grid max-w-5xl gap-6 lg:grid-cols-2">
+      <div className="mx-auto mt-12 grid max-w-5xl gap-4 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}

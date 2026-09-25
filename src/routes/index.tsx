@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { Stars, SparkTrail } from "@/components/Magic";
 import Hero from "@/components/Hero";
+import ChapterNav from "@/components/ChapterNav";
 import AboutHer from "@/components/AboutHer";
 import SortingHat from "@/components/SortingHat";
 import Pensieve from "@/components/Pensieve";
 import Honeydukes from "@/components/Honeydukes";
 import HerPeople from "@/components/HerPeople";
 import PlacesMap from "@/components/PlacesMap";
-import TheLetter from "@/components/TheLetter";
 import Prayers from "@/components/Prayers";
 import Finale from "@/components/Finale";
 
@@ -19,13 +19,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A magical, cinematic storybook for issshii — a sealed acceptance letter, floating candles, the Sorting Hat, a Pensieve of memories, and one very true letter.",
+          "A cinematic magical chronicle for Ishika — her world, favourite memories, enchanted map and a love written in the stars.",
       },
       { property: "og:title", content: "Ishika Awasthi & the Goblet of Forever" },
       {
         property: "og:description",
         content:
-          "A magical, cinematic storybook for issshii — a sealed acceptance letter, floating candles, the Sorting Hat, a Pensieve of memories, and one very true letter.",
+          "A cinematic magical chronicle for Ishika — her world, favourite memories, enchanted map and a love written in the stars.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -40,13 +40,13 @@ function Index() {
       <Stars />
       <SparkTrail />
       <Hero />
+      <ChapterNav />
       <AboutHer />
       <SortingHat />
       <Pensieve />
       <Honeydukes />
       <HerPeople />
       <PlacesMap />
-      <TheLetter />
       <Prayers />
       <Finale />
     </main>

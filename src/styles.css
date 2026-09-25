@@ -79,6 +79,10 @@
     overflow-x: clip;
   }
 
+  section + section {
+    border-top: 1px solid color-mix(in oklab, var(--gold) 9%, transparent);
+  }
+
   ::selection {
     background: var(--gold);
     color: var(--night);
@@ -234,6 +238,15 @@
 @keyframes ink-appear {
   0% { opacity: 0; transform: translateY(6px) scale(0.6); }
   100% { opacity: 0.8; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @keyframes snitch-path {

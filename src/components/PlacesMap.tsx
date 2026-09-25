@@ -15,15 +15,15 @@ const places = [
 
 export default function PlacesMap() {
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section id="lands" className="relative scroll-mt-16 px-4 py-20 sm:py-24">
       <SectionHeading
-        eyebrow="Annotated in enchanted ink"
-        title="Her Map of Magical Lands"
-        subtitle="Every place she carries with her — and one dream, plotted for someday."
+        eyebrow="Messrs Moony, Wormtail, Padfoot & Prongs present"
+        title="Ishika’s Marauder’s Map"
+        subtitle="Footsteps through the places she carries with her — and one destination still waiting."
       />
 
-      <div className="mx-auto mt-16 max-w-5xl">
-        <div className="parchment-panel relative rounded-xl p-8 sm:p-12">
+      <div className="mx-auto mt-12 max-w-5xl">
+        <div className="parchment-panel relative overflow-hidden rounded-lg p-6 sm:p-10">
           {/* compass rose */}
           <svg
             viewBox="0 0 80 80"
@@ -36,7 +36,7 @@ export default function PlacesMap() {
             <text x="40" y="8" textAnchor="middle" fontSize="9" fill="var(--ink)">N</text>
           </svg>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="relative grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {places.map((p, i) => (
               <motion.div
                 key={p.name}
@@ -44,10 +44,12 @@ export default function PlacesMap() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: (i % 3) * 0.1, duration: 0.5 }}
-                className="rounded-md border border-ink/25 bg-parchment-deep/40 p-5"
+                className="group relative min-h-28 rounded-md border border-ink/25 bg-parchment-deep/35 p-5 transition-colors hover:bg-parchment-deep/55"
               >
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-wine" aria-hidden />
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-wine/45 font-display text-[0.55rem] text-wine">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
                   <h3 className="font-display text-base font-semibold">{p.name}</h3>
                 </div>
                 <p className="mt-2 font-letter text-base leading-snug opacity-80">{p.note}</p>
@@ -61,7 +63,7 @@ export default function PlacesMap() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mt-6 overflow-hidden rounded-md border-2 border-gold/60 bg-night p-6 text-center sm:p-8"
+            className="relative mt-4 overflow-hidden rounded-md border border-gold/60 bg-night p-6 text-center sm:p-8"
           >
             <div className="absolute inset-0 opacity-15" aria-hidden>
               <div className="absolute top-4 left-8 h-1 w-1 rounded-full bg-gold-bright" />

@@ -42,9 +42,9 @@ function AcceptanceLetterOverlay({ onClose }: { onClose: () => void }) {
             seconds, for the record).
           </p>
           <p>
-            Enclosed in this site you will find: one Marauder&rsquo;s Map of your world, one
-            Pensieve of shared memories, one Honeydukes-approved menu, and one true
-            letter — sealed with far more than wax.
+            Enclosed in this chronicle you will find: one Marauder&rsquo;s Map of your world,
+            one Pensieve of shared memories, one Honeydukes-approved menu, and all the
+            small magic that makes you, you.
           </p>
           <p>
             Term begins the moment you break the seal. No reply is required. Your
@@ -80,7 +80,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section className="relative flex min-h-[92svh] items-center justify-center overflow-hidden">
       {/* cinematic backdrop */}
       <motion.div style={{ y: bgY }} className="absolute inset-0 -z-10">
         <img
@@ -123,7 +123,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 1 }}
-          className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
+          className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
         >
           26 years of the world spinning without her. Seven and a half months of making up
           for every single day. This is her story — told the only way it deserves: with
@@ -135,7 +135,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.15, duration: 0.8 }}
-          className="mt-12 flex flex-col items-center gap-4"
+          className="mt-9 flex flex-col items-center gap-3"
         >
           <motion.button
             onClick={() => setOpen(true)}
@@ -167,7 +167,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.6, duration: 1 }}
-          className="mt-14 flex items-center justify-center gap-3 text-sm text-muted-foreground"
+          className="mt-9 flex items-center justify-center gap-3 text-sm text-muted-foreground"
         >
           <Sparkle className="h-3.5 w-3.5" />
           <span>Scroll — the candles will light the way</span>

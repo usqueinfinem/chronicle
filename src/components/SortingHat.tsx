@@ -49,14 +49,14 @@ export default function SortingHat() {
   const sorted = stage > total;
 
   return (
-    <section className="relative px-4 py-28 sm:py-36">
+    <section id="sorting" className="relative scroll-mt-16 px-4 py-20 sm:py-24">
       <SectionHeading
         eyebrow="A ceremony of utmost importance"
         title="The Sorting Hat must decide"
         subtitle="Tap the hat. Let ancient magic have a look at her."
       />
 
-      <div className="mx-auto mt-14 flex max-w-2xl flex-col items-center">
+      <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center">
         <motion.button
           onClick={() => setStage((s) => Math.min(s + 1, total + 1))}
           whileHover={{ scale: 1.04 }}
