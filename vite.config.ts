@@ -12,4 +12,12 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  import { defineConfig } from 'vite'
+// ... (leave any other existing imports at the top alone)
+
+export default defineConfig({
+  base: '/ishikas-magical-chronicle/', // 👈 ADD THIS EXACT LINE HERE
+  // ... (leave all your other existing configurations underneath completely untouched)
+})
+
 });
