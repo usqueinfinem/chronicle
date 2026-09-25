@@ -1,0 +1,76 @@
+# Advanced workflow for deploying Vite/React/TanStack static content from Lovable to GitHub Pages
+name: Deploy Lovable site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Locate and Prepare Output Folder
+        run: |
+          mkdir -p github_deploy_dir
+          if [ -d "dist" ]; then
+            echo "Found dist folder"
+            cp -r dist/* github_deploy_dir/
+          elif [ -d "build" ]; then
+            echo "Found build folder"
+            cp -r build/* github_deploy_dir/
+          elif [ -d ".output/public" ]; then
+            echo "Found Nitro/TanStack output folder"
+            cp -r .output/public/* github_deploy_dir/
+          elif [ -f "index.html" ]; then
+            echo "Project is unbuilt static source or root-based. Deploying root directory."
+            rsync -av --exclude='node_modules' --exclude='.git' --exclude='.github' --exclude='github_deploy_dir' ./ github_deploy_dir/
+          else
+            echo "Looking for any index.html file..."
+            TARGET_DIR=$(find . -name "index.html" -not -path "*/node_modules/*" -not -path "./github_deploy_dir/*" -exec dirname {} \;)
+            if [ ! -z "$TARGET_DIR" ]; then
+              echo "Found index.html in $TARGET_DIR"
+              cp -r $TARGET_DIR/* github_deploy_dir/
+            else
+              echo "Error: No web output or index.html found anywhere!"
+              exit 1
+            fi
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './github_deploy_dir'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
