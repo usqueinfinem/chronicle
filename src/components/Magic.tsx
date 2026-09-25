@@ -6,16 +6,20 @@ function seededValue(seed: number) {
   return value - Math.floor(value);
 }
 
+function stableNumber(value: number) {
+  return value.toFixed(4);
+}
+
 /* Night sky — a fixed field of twinkling stars behind everything */
 export function Stars() {
   const stars = useMemo(
     () =>
       Array.from({ length: 140 }, (_, i) => ({
         id: i,
-        left: seededValue(i + 1) * 100,
-        top: seededValue(i + 141) * 100,
-        size: seededValue(i + 281) * 2.2 + 1,
-        delay: seededValue(i + 421) * 4,
+        left: stableNumber(seededValue(i + 1) * 100),
+        top: stableNumber(seededValue(i + 141) * 100),
+        size: stableNumber(seededValue(i + 281) * 2.2 + 1),
+        delay: stableNumber(seededValue(i + 421) * 4),
       })),
     []
   );
@@ -30,8 +34,8 @@ export function Stars() {
             {
               left: `${s.left}%`,
               top: `${s.top}%`,
-              width: s.size,
-              height: s.size,
+              width: `${s.size}px`,
+              height: `${s.size}px`,
               "--d": `${s.delay}s`,
             } as React.CSSProperties
           }
@@ -166,7 +170,7 @@ export function FloatingCandles({ count = 14 }: { count?: number }) {
         left: `${(i * 97) % 96 + 2}%`,
         top: `${(i * 53) % 70 + 4}%`,
         scale: 0.6 + ((i * 7) % 10) / 16,
-        delay: seededValue(i + 601) * 6,
+        delay: Number(stableNumber(seededValue(i + 601) * 6)),
       })),
     [count]
   );
